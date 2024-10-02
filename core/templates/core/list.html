@@ -1,0 +1,10 @@
+{% for x in todo_tasks %}
+    <p>{{ x.id }} - {{ x.title }}
+        <a href="{% url 'details' x.id %}">ver</a>  
+        <a href="{% url 'update' x.id %}">editar</a>  
+        <form action="{% url 'delete' x.id %}" method="post" style="display:inline;">
+            {% csrf_token %}
+            <button type="submit">delete</button>  
+        </form>
+    </p>
+{% endfor %}
